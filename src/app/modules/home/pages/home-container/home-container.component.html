@@ -1,0 +1,28 @@
+
+<app-navbar (toggleSidebar)="toggleSidebar()"></app-navbar>
+
+<ng-sidebar-container>
+
+    <!-- A sidebar -->
+    <ng-sidebar  [(opened)]="opened">
+        <br>
+        <h5 class="sidebar-title"><i-bs name="collection-play-fill"></i-bs>  Videos</h5>
+        <span class="overview">Overview</span>
+        <br><br>
+        <ul>
+          <li><i-bs name="tv"></i-bs> Video 1</li>
+          <li><i-bs name="tv"></i-bs> Video 2</li>
+          <li><i-bs name="tv"></i-bs> Video 3</li>
+
+        </ul>
+    </ng-sidebar>
+
+    <!-- Page content -->
+    <div ng-sidebar-content>
+        <div class="container">
+           <router-outlet></router-outlet>
+        </div>
+
+    </div>
+
+</ng-sidebar-container>

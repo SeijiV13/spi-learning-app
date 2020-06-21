@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+@font-face {
+  font-family: poppins-regular;
+  src: url(assets/fonts/Poppins-Regular.ttf) format("opentype");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'poppins-regular';
+}
+
+.container {
+  padding: 10px;
+}
+
+body {
+  background: #38383e;
+  color: white;
+  margin:0;
+}
+
+.card {
+  background:#2b2525;
+  color: white;
+  -webkit-box-shadow: 4px 5px 26px -3px rgba(0,0,0,0.75);
+  -moz-box-shadow: 4px 5px 26px -3px rgba(0,0,0,0.75);
+  box-shadow: 4px 5px 26px -3px rgba(0,0,0,0.75);
+}
+
+.ng-sidebar {
+  background: #2d2c2c !important;
+  -webkit-box-shadow: 4px 5px 26px -3px rgba(0,0,0,0.75);
+  -moz-box-shadow: 4px 5px 26px -3px rgba(0,0,0,0.75);
+  box-shadow: 4px 5px 26px -3px rgba(0,0,0,0.75);
+  width: 250px;
+
+}
+
+.popover-body {
+  cursor:pointer;
+}
