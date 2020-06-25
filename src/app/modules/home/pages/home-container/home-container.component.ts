@@ -1,3 +1,4 @@
+import { VideoService } from './../../../../core/services/video.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,9 +10,12 @@ export class HomeContainerComponent implements OnInit {
   opened = false;
 
 
-  constructor() { }
+  constructor(private videoService: VideoService) { }
 
   ngOnInit() {
+    this.videoService.getVideos().subscribe((data) => {
+
+    })
   }
 
   toggleSidebar() {

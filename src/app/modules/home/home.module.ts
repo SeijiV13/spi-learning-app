@@ -8,6 +8,8 @@ import { SidebarModule } from 'ng-sidebar';
 import { NavbarComponent } from 'src/app/core/components/navbar/navbar.component';
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiKeyInterceptor } from 'src/app/core/interceptors/apikey.interceptor';
 
 
 @NgModule({
@@ -19,6 +21,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     NgxBootstrapIconsModule.pick(allIcons),
     SidebarModule.forRoot()
-  ]
+  ], providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: ApiKeyInterceptor,
+    multi: true}]
 })
 export class HomeModule { }

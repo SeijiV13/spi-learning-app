@@ -40,3 +40,10 @@ img {
 .logout {
   cursor:pointer;
 }
+
+
+@media(max-width: 767px) {
+  .company-name {
+    display: none;
+  }
+}

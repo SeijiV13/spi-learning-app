@@ -1,17 +1,29 @@
+import { AuthService } from './../../../../core/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import anime from 'animejs/lib/anime.es.js';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  form: FormGroup;
+  constructor(private router: Router,
+              private fb: FormBuilder,
+              private authService: AuthService) { }
 
   ngOnInit() {
     this.animateForm();
+    this.initForm();
+  }
+
+  initForm() {
+    this.form = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
   animateForm() {
@@ -68,7 +80,20 @@ export class LoginFormComponent implements OnInit {
   }
 
   login() {
-     this.router.navigate(['/home/courses']);
+    if(this.form.valid) {
+      const user = this.form.getRawValue();
+      this.authService.login(user).subscribe((data) => {
+        localStorage.setItem('token', data.jwt);
+        localStorage.setItem('userk', data.userk);
+        localStorage.setItem('name', data.name);
+        this.router.navigate(['/home/courses']);
+      },
+      error => {
+        console.log(error);
+      });
+    }
+
+    //  this.router.navigate(['/home/courses']);
   }
 
 

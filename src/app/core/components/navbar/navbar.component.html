@@ -5,12 +5,12 @@
         <div class="left">
             <i-bs name="list" class="menu-button" (click)="toggle()"></i-bs>
             <img src="https://spi.ph/wp-content/uploads/2019/03/logo.png">
-            St. Peregrine Institute
+            <span class="company-name"> St. Peregrine Institute</span>
         </div>
         <div class="right">
           <div class="welcome" placement="bottom" [ngbPopover]="logout">
             <i-bs name="person-circle" class="menu-button" ></i-bs>
-            Welcome User1!
+            Welcome {{user}}
           </div>
         </div>
     </div>

@@ -8,9 +8,11 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   @Output() toggleSidebar = new EventEmitter();
+  user = '';
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.user = localStorage.getItem('name');
   }
   toggle() {
     this.toggleSidebar.emit();
