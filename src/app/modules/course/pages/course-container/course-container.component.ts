@@ -1,6 +1,7 @@
 import { VideoService } from './../../../../core/services/video.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-course-container',
@@ -9,7 +10,9 @@ import { Router } from '@angular/router';
 })
 export class CourseContainerComponent implements OnInit {
   rawCourses: any = [];
-  constructor(private router: Router, private videoService: VideoService) { }
+  constructor(private router: Router,
+              private videoService: VideoService,
+              private ngxLoaderService: NgxUiLoaderService) { }
 
   ngOnInit() {
     this.getCourses();
@@ -17,12 +20,16 @@ export class CourseContainerComponent implements OnInit {
 
   getCourses() {
     const id = localStorage.getItem('idus');
+    this.ngxLoaderService.start();
     this.videoService.getUserCourse(id).subscribe((data) => {
+            this.ngxLoaderService.stop();
             localStorage.setItem('userCourses', JSON.stringify(data));
             this.videoService.getCourseGroup(data).subscribe((data2) => {
             this.rawCourses = data2;
             localStorage.setItem('rawCourses', JSON.stringify(data2));
        });
+    }, error => {
+      this.ngxLoaderService.stop();
     });
   }
 

@@ -17,6 +17,7 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
     SharedModule,
     NgbModule,
     VideoRoutes,
+    NgxUiLoaderModule,
     NgxBootstrapIconsModule.pick(allIcons),
     SidebarModule.forRoot()
   ], providers: [{

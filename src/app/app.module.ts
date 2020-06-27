@@ -8,6 +8,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiKeyInterceptor } from './core/interceptors/apikey.interceptor';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,8 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
       textPosition: 'center-center',
       maxTime: -1,
       minTime: 300
-    })
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

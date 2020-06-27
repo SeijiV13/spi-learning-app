@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CourseContainerComponent } from './pages/course-container/course-container.component';
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 import { CourseRoutes } from './course.routing';
-
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
 @NgModule({
@@ -13,6 +13,7 @@ import { CourseRoutes } from './course.routing';
     CommonModule,
     CourseRoutes,
     NgxBootstrapIconsModule.pick(allIcons),
+    NgxUiLoaderModule,
   ]
 })
 export class CourseModule { }
