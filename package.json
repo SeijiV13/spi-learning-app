@@ -28,6 +28,7 @@
     "express": "^4.17.1",
     "ng-sidebar": "^9.3.0",
     "ngx-bootstrap-icons": "0.0.19",
+    "ngx-toastr": "^12.1.0",
     "ngx-ui-loader": "^9.1.1",
     "path": "^0.12.7",
     "rxjs": "~6.5.4",

@@ -11,7 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiKeyInterceptor } from 'src/app/core/interceptors/apikey.interceptor';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
-
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [HomeContainerComponent, NavbarComponent],
   imports: [
@@ -20,6 +20,7 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
     HomeRoutes,
     NgbModule,
     NgxUiLoaderModule,
+    ToastrModule,
     NgxBootstrapIconsModule.pick(allIcons),
     SidebarModule.forRoot()
   ], providers: [{

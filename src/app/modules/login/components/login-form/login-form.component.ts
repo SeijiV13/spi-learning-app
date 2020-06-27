@@ -4,6 +4,8 @@ import anime from 'animejs/lib/anime.es.js';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { throwError } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -11,10 +13,12 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 })
 export class LoginFormComponent implements OnInit {
   form: FormGroup;
+  errorMessage = '';
   constructor(private router: Router,
               private fb: FormBuilder,
               private authService: AuthService,
-              private ngxService: NgxUiLoaderService) { }
+              private ngxService: NgxUiLoaderService,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.animateForm();
@@ -95,8 +99,14 @@ export class LoginFormComponent implements OnInit {
       },
       error => {
         this.ngxService.stop();
-        console.log(error);
+        if(error.error) {
+          this.toastr.error(error.error.message, 'Server Errror');
+        } else {
+          this.toastr.error('Something went wrong please contact server administrator', 'Server Errror');
+        }
       });
+    } else {
+       this.errorMessage = 'Username and Password field is required';
     }
 
     //  this.router.navigate(['/home/courses']);

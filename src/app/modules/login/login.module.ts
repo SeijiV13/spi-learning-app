@@ -5,7 +5,7 @@ import { LoginContainerComponent } from './pages/login-container/login-container
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [LoginContainerComponent, LoginFormComponent],
@@ -13,6 +13,7 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
     CommonModule,
     LoginRoutes,
     FormsModule,
+    ToastrModule,
     ReactiveFormsModule,
     NgxUiLoaderModule
   ]

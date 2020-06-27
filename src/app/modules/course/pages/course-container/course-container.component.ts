@@ -2,6 +2,7 @@ import { VideoService } from './../../../../core/services/video.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-course-container',
@@ -12,7 +13,8 @@ export class CourseContainerComponent implements OnInit {
   rawCourses: any = [];
   constructor(private router: Router,
               private videoService: VideoService,
-              private ngxLoaderService: NgxUiLoaderService) { }
+              private ngxLoaderService: NgxUiLoaderService,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getCourses();
@@ -29,6 +31,7 @@ export class CourseContainerComponent implements OnInit {
             localStorage.setItem('rawCourses', JSON.stringify(data2));
        });
     }, error => {
+      this.toastr.error('Something went wrong please contact server administrator', 'Server Errror');
       this.ngxLoaderService.stop();
     });
   }

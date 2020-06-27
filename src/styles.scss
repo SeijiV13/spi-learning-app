@@ -2,7 +2,8 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
-
+// regular style toast
+@import '~ngx-toastr/toastr';
 @font-face {
   font-family: poppins-regular;
   src: url(assets/fonts/Poppins-Regular.ttf) format("opentype");
@@ -49,4 +50,18 @@ body {
 
 .popover-body {
   cursor:pointer;
+}
+
+
+.error-box {
+  width: 100%;
+  padding: 10px;
+  border-style: solid;
+  border-color: #c14e48;
+  border-radius: 10px;
+  border-width: 1px;
+  position: absolute;
+  margin-top: -35px;
+  font-size: 10px;
+  color: #e08181;
 }

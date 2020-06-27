@@ -1,5 +1,5 @@
 import { VideoService } from './../../../../core/services/video.service';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
@@ -19,7 +19,7 @@ export class HomeContainerComponent implements OnInit {
   video;
   selectedCourse;
 
-  constructor(private videoService: VideoService, private router: Router) { }
+  constructor(private videoService: VideoService, private router: Router, private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.listenToRouter();
@@ -34,9 +34,11 @@ export class HomeContainerComponent implements OnInit {
    } else {
      this.showMenu = true;
      if (this.router.url === '/home/lessons') {
+      this.opened = true;
       this.sidebarTitle = 'Lessons';
       this.getCourseTitle();
      } else if (this.router.url === '/home/videos') {
+      this.opened = true;
       this.sidebarTitle = 'Videos';
       this.getVideos();
      }
@@ -55,6 +57,7 @@ export class HomeContainerComponent implements OnInit {
   listenToLessons() {
     this.videoService.lessons.subscribe((data) => {
       this.lessons = data;
+      this.cd.detectChanges();
     });
 
     this.videoService.selectLesson.subscribe((data) => {
@@ -71,14 +74,15 @@ export class HomeContainerComponent implements OnInit {
        } else {
          this.showMenu = true;
          if (event.url === '/home/lessons') {
+           this.opened = true;
            this.sidebarTitle = 'Lessons';
            this.getCourseTitle();
          }
 
          if (event.url === '/home/videos') {
-
-           this.sidebarTitle = 'Videos';
-           this.getVideos();
+          this.opened = true;
+          this.sidebarTitle = 'Videos';
+          this.getVideos();
         }
        }
       }

@@ -10,6 +10,7 @@ import { ApiKeyInterceptor } from './core/interceptors/apikey.interceptor';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +21,7 @@ import { environment } from '../environments/environment';
     NgbModule,
     SharedModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
     NgxUiLoaderModule.forRoot({
       bgsColor: '#46c81e',
       bgsOpacity: 0.5,

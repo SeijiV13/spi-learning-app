@@ -5,13 +5,14 @@ import { CourseContainerComponent } from './pages/course-container/course-contai
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 import { CourseRoutes } from './course.routing';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [CourseItemComponent, CourseContainerComponent],
   imports: [
     CommonModule,
     CourseRoutes,
+    ToastrModule,
     NgxBootstrapIconsModule.pick(allIcons),
     NgxUiLoaderModule,
   ]
