@@ -1,0 +1,8 @@
+
+
+<div>
+  <h4>{{video.title}}</h4>
+  <h6>{{video.description}}</h6>
+  <iframe *ngIf="videLoaded" [src]="url"
+  style="border:0;height:70vh;width:100%;max-width:100%" allowFullScreen="true" allow="encrypted-media"></iframe>
+</div>

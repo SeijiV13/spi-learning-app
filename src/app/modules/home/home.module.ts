@@ -10,7 +10,7 @@ import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiKeyInterceptor } from 'src/app/core/interceptors/apikey.interceptor';
-
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 @NgModule({
   declarations: [HomeContainerComponent, NavbarComponent],
@@ -19,6 +19,7 @@ import { ApiKeyInterceptor } from 'src/app/core/interceptors/apikey.interceptor'
     SharedModule,
     HomeRoutes,
     NgbModule,
+    NgxUiLoaderModule,
     NgxBootstrapIconsModule.pick(allIcons),
     SidebarModule.forRoot()
   ], providers: [{

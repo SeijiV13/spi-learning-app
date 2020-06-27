@@ -10,6 +10,9 @@ const routes: Routes = [
       },
       {
         path: 'lessons', loadChildren: () => import('../lessons/lessons.module').then(m => m.LessonsModule)
+      },
+      {
+        path: 'videos', loadChildren: () => import('../video/video.module').then(m => m.VideoModule)
       }
     ]
   },

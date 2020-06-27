@@ -18,6 +18,10 @@ li:hover {
 
 }
 
+.selected {
+  background: #208c5d;
+}
+
 .sidebar-title {
   margin-left:10px;
   margin-bottom: 0px;

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import anime from 'animejs/lib/anime.es.js';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -12,7 +13,8 @@ export class LoginFormComponent implements OnInit {
   form: FormGroup;
   constructor(private router: Router,
               private fb: FormBuilder,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private ngxService: NgxUiLoaderService) { }
 
   ngOnInit() {
     this.animateForm();
@@ -80,15 +82,19 @@ export class LoginFormComponent implements OnInit {
   }
 
   login() {
-    if(this.form.valid) {
+    if (this.form.valid) {
       const user = this.form.getRawValue();
+      this.ngxService.start();
       this.authService.login(user).subscribe((data) => {
         localStorage.setItem('token', data.jwt);
         localStorage.setItem('userk', data.userk);
+        localStorage.setItem('idus', data.idus);
         localStorage.setItem('name', data.name);
         this.router.navigate(['/home/courses']);
+        this.ngxService.stop();
       },
       error => {
+        this.ngxService.stop();
         console.log(error);
       });
     }

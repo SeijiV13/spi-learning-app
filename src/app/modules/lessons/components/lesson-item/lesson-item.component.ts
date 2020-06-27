@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-lesson-item',
@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lesson-item.component.css']
 })
 export class LessonItemComponent implements OnInit {
-
+  @Input() src = '';
+  @Input() videoTitle = '';
+  @Input() description = '';
+  @Input() length;
   constructor() { }
 
   ngOnInit() {

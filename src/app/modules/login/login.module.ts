@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { LoginContainerComponent } from './pages/login-container/login-container.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     LoginRoutes,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxUiLoaderModule
   ]
 })
 export class LoginModule { }

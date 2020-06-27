@@ -1,14 +1,8 @@
 <br>
-<h3>  <i-bs name="chat-square"></i-bs> Course 1</h3>
+<h3>  <i-bs name="chat-square"></i-bs> Lesson {{lessonNumber}}</h3>
 <br>
 <div class="row">
-  <div class="col-sm-12 col-md-4">
-      <app-lesson-item></app-lesson-item>
-  </div>
-  <div class="col-sm-12 col-md-4">
-      <app-lesson-item></app-lesson-item>
-  </div>
-  <div class="col-sm-12 col-md-4">
-     <app-lesson-item></app-lesson-item>
+  <div *ngFor="let data of videos" class="col-sm-12 col-md-4">
+      <app-lesson-item (click)="goToVideo(data)" [src]="data.poster" [videoTitle]="data.title" [description]="data.description" [length]="data.length"></app-lesson-item>
   </div>
 </div>

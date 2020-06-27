@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Router } from '@angular/router';
+
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,12 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  @Input() showMenu = true;
   @Output() toggleSidebar = new EventEmitter();
   user = '';
   constructor(private router: Router) { }
 
   ngOnInit() {
     this.user = localStorage.getItem('name');
+    this.listenToRouter();
   }
   toggle() {
     this.toggleSidebar.emit();
@@ -21,4 +24,17 @@ export class NavbarComponent implements OnInit {
  logoutApp() {
    this.router.navigate(['/']);
  }
+
+
+ listenToRouter() {
+  this.router.events.subscribe((event) => {
+    if (event instanceof NavigationEnd) {
+      if (event.url === '/home/lessons') {
+
+     }
+    }
+  });
+}
+
+
 }

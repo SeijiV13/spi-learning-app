@@ -21,6 +21,7 @@ body {
   position: absolute;
   place-content: center;
   width: calc(100% - 40px);
+  align-items: center;
 }
 @media (max-width: 767px) {
   .page {
@@ -130,4 +131,12 @@ input::-moz-focus-inner {
 }
 #submit:active {
   color: #d0d0d2;
+}
+
+.logo-login  {
+  background: url(https://spi.ph/wp-content/uploads/2019/03/logo.png);
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
