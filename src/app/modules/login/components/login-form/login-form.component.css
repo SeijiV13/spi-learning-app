@@ -42,6 +42,7 @@ body {
     height: 630px;
     width: 320px;
   }
+
 }
 .left {
   background: white;
@@ -54,6 +55,7 @@ body {
   .left {
     height: 100%;
     left: 20px;
+    top: 0px;
     width: calc(100% - 40px);
     max-height: 270px;
   }
