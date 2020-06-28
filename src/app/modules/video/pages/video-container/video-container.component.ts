@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-video-container',
@@ -17,7 +18,8 @@ export class VideoContainerComponent implements OnInit {
   constructor(private videoService: VideoService,
               private sanitize: DomSanitizer,
               private ngxLoaderService: NgxUiLoaderService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.getVideo();
@@ -48,6 +50,10 @@ export class VideoContainerComponent implements OnInit {
       this.getVideo();
       this.ngxLoaderService.stop();
     });
+  }
+
+  back() {
+    this.router.navigate(['/home/lessons']);
   }
 
 }

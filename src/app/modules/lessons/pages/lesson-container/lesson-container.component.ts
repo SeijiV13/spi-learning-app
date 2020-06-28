@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-lesson-container',
   templateUrl: './lesson-container.component.html',
-  styleUrls: ['./lesson-container.component.css']
+  styleUrls: ['./lesson-container.component.scss']
 })
 export class LessonContainerComponent implements OnInit {
   selectedCourse: any;
@@ -57,5 +57,10 @@ export class LessonContainerComponent implements OnInit {
   goToVideo(data) {
     localStorage.setItem('selectedVideo', JSON.stringify(data));
     this.router.navigate(['/home/videos']);
+  }
+
+
+  back() {
+    this.router.navigate(['/home/courses'])
   }
 }

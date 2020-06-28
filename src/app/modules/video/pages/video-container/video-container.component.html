@@ -1,8 +1,16 @@
 
 
 <div>
-  <h4>{{video.title}}</h4>
-  <h6>{{video.description}}</h6>
+<div class="title-container">
+        <div class="left">
+            <h4>{{video.title}}</h4>
+            <h6>{{video.description}}</h6>
+        </div>
+        <div class="right" (click)="back()">
+          <i-bs name="arrow-left-circle-fill"></i-bs> Back to Lessons
+        </div>
+
+  </div>
   <iframe *ngIf="videLoaded" [src]="url"
   style="border:0;height:70vh;width:100%;max-width:100%" allowFullScreen="true" allow="encrypted-media"></iframe>
 </div>
