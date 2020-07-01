@@ -53,6 +53,7 @@ body {
 }
 @media (max-width: 767px) {
   .left {
+    display:none;
     height: 100%;
     left: 20px;
     top: 0px;
