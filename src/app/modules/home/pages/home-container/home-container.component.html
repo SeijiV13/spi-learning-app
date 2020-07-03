@@ -7,11 +7,11 @@
     <ng-sidebar  [(opened)]="opened">
         <br>
         <h5 class="sidebar-title"><i-bs name="collection-play-fill"></i-bs>  {{sidebarTitle}}</h5>
-        <span *ngIf="sidebarTitle === 'Videos'"class="overview">Lesson {{lessonNumber}}</span>
-        <span *ngIf="sidebarTitle === 'Lessons'"class="overview">{{selectedCourse.title}}</span>
+        <span *ngIf="sidebarTitle === 'Videos'"class="overview">Unit Competency {{lessonNumber}}</span>
+        <span *ngIf="sidebarTitle === 'Unit Competencies'"class="overview">{{selectedCourse.title}}</span>
         <br><br>
-        <ul *ngIf="sidebarTitle === 'Lessons' ">
-          <li [ngClass]="lessonNumber === i + 1 ? 'selected' : ''" *ngFor="let data of lessons; let i = index" (click)="selectLesson(i + 1)"><i-bs name="tv"></i-bs> Lesson {{i + 1}}</li>
+        <ul *ngIf="sidebarTitle === 'Unit Competencies' ">
+          <li [ngClass]="lessonNumber === i + 1 ? 'selected' : ''" *ngFor="let data of lessons; let i = index" (click)="selectLesson(i + 1)"><i-bs name="tv"></i-bs> Unit Competency {{i + 1}}</li>
         </ul>
         <ul *ngIf="sidebarTitle === 'Videos' ">
           <li [ngClass]="data.id === video.id ? 'selected' : ''" *ngFor="let data of videos; let i = index" (click)="goToVideo(data)"><i-bs name="tv"></i-bs> {{data.title}}</li>

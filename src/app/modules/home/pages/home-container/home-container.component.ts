@@ -35,7 +35,7 @@ export class HomeContainerComponent implements OnInit {
      this.showMenu = true;
      if (this.router.url === '/home/lessons') {
       this.opened = true;
-      this.sidebarTitle = 'Lessons';
+      this.sidebarTitle = 'Unit Competencies';
       this.getCourseTitle();
      } else if (this.router.url === '/home/videos') {
       this.opened = true;
@@ -75,7 +75,7 @@ export class HomeContainerComponent implements OnInit {
          this.showMenu = true;
          if (event.url === '/home/lessons') {
            this.opened = true;
-           this.sidebarTitle = 'Lessons';
+           this.sidebarTitle = 'Unit Competencies';
            this.getCourseTitle();
          }
 

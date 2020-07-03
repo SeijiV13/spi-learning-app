@@ -24,7 +24,7 @@ export class LessonContainerComponent implements OnInit {
   }
 
   getDefaultLesson() {
-    this.videos = this.selectedCourse.video.filter((data2) => data2.tags.some(tag => tag.includes(`lesson1`)));
+    this.videos = this.selectedCourse.video.filter((data2) => data2.tags.some(tag => tag.includes(`uc1`)));
     this.lessonNumber = '1';
     localStorage.setItem('selectedVideos', JSON.stringify(this.videos));
   }
@@ -32,7 +32,7 @@ export class LessonContainerComponent implements OnInit {
   listenToSelectedLesson() {
     this.videoService.selectLesson.subscribe((data) => {
       this.lessonNumber = data;
-      this.videos = this.selectedCourse.video.filter((data2) => data2.tags.some(tag => tag.includes(`lesson${data}`)));
+      this.videos = this.selectedCourse.video.filter((data2) => data2.tags.some(tag => tag.includes(`uc${data}`)));
       localStorage.setItem('selectedVideos', JSON.stringify(this.videos));
     });
   }
