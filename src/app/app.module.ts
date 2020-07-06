@@ -12,9 +12,10 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ToastrModule } from 'ngx-toastr';
+import { SessionExpiredComponent } from './core/components/modals/session-expired/session-expired.component';
 @NgModule({
   declarations: [
-    AppComponent, NotFoundComponent
+    AppComponent, NotFoundComponent, SessionExpiredComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +61,7 @@ import { ToastrModule } from 'ngx-toastr';
     provide: HTTP_INTERCEPTORS,
     useClass: ApiKeyInterceptor,
     multi: true}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SessionExpiredComponent]
 })
 export class AppModule { }
