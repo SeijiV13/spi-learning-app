@@ -1,7 +1,7 @@
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { SessionExpiredComponent } from '../components/modals/session-expired/session-expired.component';
@@ -37,6 +37,8 @@ export class ApiKeyInterceptor implements HttpInterceptor {
         this.loadr.stop();
         this.modalService.open(SessionExpiredComponent);
         return of(null);
+      } else {
+        return throwError(error)
       }
     }
 }
