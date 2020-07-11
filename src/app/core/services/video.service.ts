@@ -35,7 +35,9 @@ constructor(private http: HttpClient) { }
   }
 
   getVdoOtp(id: string) {
-    return this.http.post(`${environment.url}/vdo/otp`, {id}).pipe(
+    return this.http.post(`${environment.url}/vdo/otp`, {id,
+      annotate: "[{'type':'rtext', 'text':'SPI Connect', 'alpha':'0.8 0', 'color':'0xFFFFFF','size':'30','interval':'5000'}]"
+    }).pipe(
       map(data => data),
       catchError(error => throwError(error))
     );
