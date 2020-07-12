@@ -34,11 +34,11 @@ export class HomeContainerComponent implements OnInit {
    } else {
      this.showMenu = true;
      if (this.router.url === '/home/lessons') {
-      this.opened = true;
+      this.opened = false;
       this.sidebarTitle = 'Unit Competencies';
       this.getCourseTitle();
      } else if (this.router.url === '/home/videos') {
-      this.opened = true;
+      this.opened = false;
       this.sidebarTitle = 'Videos';
       this.getVideos();
      }
@@ -74,13 +74,13 @@ export class HomeContainerComponent implements OnInit {
        } else {
          this.showMenu = true;
          if (event.url === '/home/lessons') {
-           this.opened = true;
+           this.opened = false;
            this.sidebarTitle = 'Unit Competencies';
            this.getCourseTitle();
          }
 
          if (event.url === '/home/videos') {
-          this.opened = true;
+          this.opened = false;
           this.sidebarTitle = 'Videos';
           this.getVideos();
         }

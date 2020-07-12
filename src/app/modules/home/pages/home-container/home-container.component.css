@@ -31,3 +31,19 @@ li:hover {
   font-size: 12px;
   margin-left: 35px;
 }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #4c524f;
+  color: white;
+  text-align: center;
+}
+
+.copy {
+  margin-top: 15px;
+  margin-bottom: 1rem;
+  font-size: 12px;
+}
