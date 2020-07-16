@@ -16,7 +16,8 @@ export class LessonContainerComponent implements OnInit {
   ngOnInit() {
     this.selectedCourse = localStorage.getItem('selectedCourse') ? JSON.parse(localStorage.getItem('selectedCourse') ) : '';
     for (const vid of this.selectedCourse.video) {
-      vid.group = vid.tags.find(data => data.includes(this.selectedCourse.title));
+      vid.group = vid.tags.find(data => data.includes(this.selectedCourse.title.value) ||
+      data.includes((this.selectedCourse.title.value.toUpperCase())));
     }
     this.groupLessons();
     this.getDefaultLesson();
@@ -24,7 +25,7 @@ export class LessonContainerComponent implements OnInit {
   }
 
   getDefaultLesson() {
-    this.videos = this.selectedCourse.video.filter((data2) => data2.tags.some(tag => tag.includes(`uc1`)));
+    this.videos = this.selectedCourse.video.filter((data2) => data2.tags.some(tag => tag.includes(`uc1`) ||  tag.includes(`UC1`)));
     this.lessonNumber = '1';
     localStorage.setItem('selectedVideos', JSON.stringify(this.videos));
   }

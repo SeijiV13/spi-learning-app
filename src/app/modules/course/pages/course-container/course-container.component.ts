@@ -37,6 +37,7 @@ export class CourseContainerComponent implements OnInit {
   }
 
   goToCourse(data) {
+    console.log(data);
     localStorage.setItem('selectedCourse', JSON.stringify(data));
     this.router.navigate(['/home/lessons']);
   }

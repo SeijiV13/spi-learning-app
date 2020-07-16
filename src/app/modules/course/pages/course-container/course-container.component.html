@@ -3,6 +3,6 @@
 <br>
 <div class="row">
   <div *ngFor="let data of rawCourses" class="col-sm-12 col-md-4">
-      <app-course-item [src]="data?.video[0]?.poster" [title]="data.title" [videoCount]="data.video.length" (click)="goToCourse(data)"></app-course-item>
+      <app-course-item [src]="data?.video[0]?.poster" [title]="data.title.desc" [videoCount]="data.video.length" (click)="goToCourse(data)"></app-course-item>
   </div>
 </div>
