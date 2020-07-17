@@ -15,6 +15,7 @@ export class VideoContainerComponent implements OnInit {
   url;
   shareUrl;
   videLoaded = false;
+  watchVideos;
   src = `https://player.vdocipher.com/playerAssets/1.x/vdo/embed/index.html`;
   constructor(private videoService: VideoService,
               private sanitize: DomSanitizer,
@@ -32,14 +33,37 @@ export class VideoContainerComponent implements OnInit {
     this.shareUrl = `${location.origin}/share/${this.video.id}`;
   }
 
+  checkIfWatched(id) {
+    if (this.watchVideos.includes(id)) {
+        return true;
+      } else {
+        return false;
+      }
+
+  }
+
+  updateWatched() {
+    const id = localStorage.getItem('idus');
+    this.videoService.getUserWatchedVideos(id).subscribe((data) => {
+      this.watchVideos = data;
+      if (!this.checkIfWatched(this.video.id)) {
+        this.videoService.updateWatchedVideos(id, this.video.id).subscribe(() => {
+          this.videoService.watchVideoEmitter.emit('');
+        });
+      }
+    });
+
+  }
+
   getVideo() {
+
     this.videLoaded = false;
     this.ngxLoaderService.start();
     this.video = JSON.parse(localStorage.getItem('selectedVideo'));
     this.videoService.getVdoOtp(this.video.id).subscribe((data: any) => {
       const link = this.src + `#otp=${data.otp}&playbackInfo=${data.playbackInfo}`;
       this.url = this.sanitize.bypassSecurityTrustResourceUrl(this.src + `#otp=${data.otp}&playbackInfo=${data.playbackInfo}`);
-      setTimeout(() =>  this.videLoaded = true);
+      setTimeout(() =>  {this.videLoaded = true,    this.updateWatched();});
       this.ngxLoaderService.stop();
     }, error => {
       if(error.error) {

@@ -18,12 +18,14 @@ export class HomeContainerComponent implements OnInit {
   videos = [];
   video;
   selectedCourse;
-
+  watchVideos: any= [];
   constructor(private videoService: VideoService, private router: Router, private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.listenToRouter();
     this.listenToLessons();
+    this.listenToWatchedVideos();
+    this.getWatchedVideos();
     this.checkUrl();
   }
 
@@ -52,6 +54,12 @@ export class HomeContainerComponent implements OnInit {
 
   getCourseTitle() {
     this.selectedCourse = JSON.parse(localStorage.getItem('selectedCourse'));
+  }
+
+  listenToWatchedVideos() {
+    this.videoService.watchVideoEmitter.subscribe(() => {
+      this.getWatchedVideos();
+    });
   }
 
   listenToLessons() {
@@ -115,4 +123,23 @@ export class HomeContainerComponent implements OnInit {
     return  this.convertTime(minutes, '0', 2) + ':' + this.convertTime(seconds, '0', 2);
   }
 
+  getWatchedVideos() {
+    const id = localStorage.getItem('idus');
+    this.videoService.getUserWatchedVideos(id).subscribe((data) => {
+      console.log(data);
+      this.watchVideos = data;
+    });
+  }
+  checkIfWatched(id) {
+    if (this.watchVideos) {
+       if (this.watchVideos.includes(id)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+
+  }
 }

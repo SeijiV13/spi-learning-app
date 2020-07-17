@@ -20,9 +20,11 @@
         <ul *ngIf="sidebarTitle === 'Videos' ">
           <li [ngClass]="data.id === video.id ? 'selected' : ''" *ngFor="let data of videos; let i = index" (click)="goToVideo(data)">
             <span>
-              <i-bs name="tv"></i-bs> {{data.title}}</span>
+              <i-bs name="tv"></i-bs> {{data.title}}
+            </span>
             <span>
               {{getTime(data.length)}}
+              <i-bs name="check-circle" *ngIf="checkIfWatched(data.id)"></i-bs>
             </span>
         </ul>
     </ng-sidebar>
