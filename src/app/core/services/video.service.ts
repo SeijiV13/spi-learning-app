@@ -44,7 +44,7 @@ constructor(private http: HttpClient) { }
 
   getVdoOtp(id: string) {
     return this.http.post(`${environment.url}/vdo/otp`, {id,
-      annotate: `[{'type':'rtext', 'text':'moving text', 'alpha':'0.8', 'color':'0xFF0000','size':'15','interval':'5000'}
+      annotate: `[{'type':'rtext', 'text':'Spi Connect', 'alpha':'0.8', 'color':'0xFFFFFF','size':'15','interval':'5000'}
         ,{'type':'image', 'url':'${location.origin}/assets/images/spi-logo.png', 'x':'30', 'y':'50'}]`
     }).pipe(
       map(data => data),
@@ -54,7 +54,8 @@ constructor(private http: HttpClient) { }
 
   getVdoShareOtp(id: string, apikey) {
     return this.http.post(`${environment.url}/vdo/share/otp`, {id, apikey,
-      annotate: "[{'type':'image', 'url' : 'https://spi.ph/wp-content/uploads/2019/03/logo.png', 'x':'10', 'y':'10'}]"
+      annotate: `[{'type':'rtext', 'text':'Spi Connect', 'alpha':'0.8', 'color':'0xFFFFFF','size':'15','interval':'5000'}
+      ,{'type':'image', 'url':'${location.origin}/assets/images/spi-logo.png', 'x':'30', 'y':'50'}]`
     }).pipe(
       map(data => data),
       catchError(error => throwError(error))
