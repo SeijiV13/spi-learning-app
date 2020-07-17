@@ -13,4 +13,11 @@
   </div>
   <iframe *ngIf="videLoaded" [src]="url"
   style="border:0;height:70vh;width:100%;max-width:100%" allowFullScreen="true" allow="encrypted-media"></iframe>
+  <button [ngbPopover]="share"class="btn btn-success"><i-bs name="arrow-up-right"></i-bs> Share Video</button>
 </div>
+
+
+<ng-template #share>
+   Copy link to share
+   <input class="form-control" [value]="shareUrl">
+ </ng-template>

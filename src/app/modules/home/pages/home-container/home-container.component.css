@@ -6,11 +6,13 @@ ng-sidebar-container {
 
 li {
   cursor: pointer;
-  font-size: 10px;
+  font-size: 12px;
   padding: 15px;
   background: #0e1710;
   box-shadow: 4px 5px 26px -3px rgb(17, 17, 19);
   transition: 0.3s;
+  display:flex;
+  justify-content: space-between;
 }
 
 li:hover {

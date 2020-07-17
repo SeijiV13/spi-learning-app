@@ -1,3 +1,4 @@
+import { VideoShareComponent } from './modules/videoshare/video-share/video-share.component';
 import { NotFoundComponent } from './core/pages/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,6 +10,9 @@ const routes: Routes = [
   },
   {
     path: 'home', loadChildren: () =>  import('./modules/home/home.module').then((m) => m.HomeModule)
+  },
+  {
+    path: 'share/:id', component: VideoShareComponent
   },
   {
     path: '**', redirectTo: '404'

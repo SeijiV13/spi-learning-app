@@ -5,6 +5,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { SessionExpiredComponent } from '../components/modals/session-expired/session-expired.component';
+import { Router } from '@angular/router';
 
 
 @Injectable()

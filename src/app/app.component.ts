@@ -9,10 +9,5 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'spi-learning-app';
   constructor(private router: Router) {
-    if ( localStorage.getItem('token')) {
-      if (this.router.url === '/') {
-        this.router.navigate(['/home/courses']);
-      }
-    }
   }
 }

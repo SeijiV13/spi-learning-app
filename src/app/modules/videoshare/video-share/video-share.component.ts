@@ -1,42 +1,38 @@
-import { VideoService } from './../../../../core/services/video.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { VideoService } from './../../../core/services/video.service';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-video-container',
-  templateUrl: './video-container.component.html',
-  styleUrls: ['./video-container.component.scss']
+  selector: 'app-video-share',
+  templateUrl: './video-share.component.html',
+  styleUrls: ['./video-share.component.scss']
 })
-export class VideoContainerComponent implements OnInit {
+export class VideoShareComponent implements OnInit {
+
   video;
   url;
-  shareUrl;
   videLoaded = false;
+  apikey = 'hwT9meUAlHoMzfHOI9mFbKuWeCK0YNtyukZ1YYPkLBMdZjYKXbzeEaUy6mp81k9R';
   src = `https://player.vdocipher.com/playerAssets/1.x/vdo/embed/index.html`;
   constructor(private videoService: VideoService,
               private sanitize: DomSanitizer,
               private ngxLoaderService: NgxUiLoaderService,
               private toastr: ToastrService,
-              private router: Router) { }
+              private router: ActivatedRoute) { }
 
-  ngOnInit(): void {
-    this.getVideo();
-    this.restartPage();
-    this.createUrl();
+  ngOnInit() {
+    const id = this.router.snapshot.paramMap.get('id');
+    this.getVideo(id);
   }
 
-  createUrl() {
-    this.shareUrl = `${location.origin}/share/${this.video.id}`;
-  }
 
-  getVideo() {
+  getVideo(id) {
     this.videLoaded = false;
     this.ngxLoaderService.start();
-    this.video = JSON.parse(localStorage.getItem('selectedVideo'));
-    this.videoService.getVdoOtp(this.video.id).subscribe((data: any) => {
+    this.videoService.getVdoShareOtp(id, this.apikey).subscribe((data: any) => {
       const link = this.src + `#otp=${data.otp}&playbackInfo=${data.playbackInfo}`;
       this.url = this.sanitize.bypassSecurityTrustResourceUrl(this.src + `#otp=${data.otp}&playbackInfo=${data.playbackInfo}`);
       setTimeout(() =>  this.videLoaded = true);
@@ -49,17 +45,6 @@ export class VideoContainerComponent implements OnInit {
       }
       this.ngxLoaderService.stop();
     });
-  }
-
-  restartPage() {
-    this.videoService.restartVideoPage.subscribe((data) => {
-      this.getVideo();
-      this.ngxLoaderService.stop();
-    });
-  }
-
-  back() {
-    this.router.navigate(['/home/lessons']);
   }
 
 }

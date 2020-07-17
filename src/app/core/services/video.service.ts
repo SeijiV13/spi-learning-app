@@ -21,7 +21,7 @@ constructor(private http: HttpClient) { }
   }
 
   getCourseGroup(courses) {
-    return this.http.post(`${environment.url}/vdo/courses`, { courses }).pipe(
+    return this.http.post(`${environment.url}/vdo/courses`, { courses}).pipe(
       map(data => data),
       catchError(error => throwError(error))
     );
@@ -36,11 +36,19 @@ constructor(private http: HttpClient) { }
 
   getVdoOtp(id: string) {
     return this.http.post(`${environment.url}/vdo/otp`, {id,
-      annotate: "[{'type':'rtext', 'text':'SPI Connect', 'alpha':'0.8 0', 'color':'0xFFFFFF','size':'30','interval':'5000'}]"
+      annotate: "[{'type':'image', 'url' : 'https://spi.ph/wp-content/uploads/2019/03/logo.png', 'x' : '10','y' : '100'}]"
     }).pipe(
       map(data => data),
       catchError(error => throwError(error))
     );
   }
 
+  getVdoShareOtp(id: string, apikey) {
+    return this.http.post(`${environment.url}/vdo/share/otp`, {id, apikey,
+      annotate: "[{'type':'image', 'url' : 'https://spi.ph/wp-content/uploads/2019/03/logo.png', 'x' : '10','y' : '100'}]"
+    }).pipe(
+      map(data => data),
+      catchError(error => throwError(error))
+    );
+  }
 }

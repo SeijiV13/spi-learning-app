@@ -1,3 +1,4 @@
+import { VideoShareComponent } from './modules/videoshare/video-share/video-share.component';
 import { NotFoundComponent } from './core/pages/not-found/not-found.component';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,7 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { SessionExpiredComponent } from './core/components/modals/session-expired/session-expired.component';
 @NgModule({
   declarations: [
-    AppComponent, NotFoundComponent, SessionExpiredComponent
+    AppComponent, NotFoundComponent, SessionExpiredComponent, VideoShareComponent
   ],
   imports: [
     BrowserModule,
