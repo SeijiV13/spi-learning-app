@@ -70,4 +70,12 @@ constructor(private http: HttpClient) { }
     );
   }
 
+  updateTotalVideos(id, totalVideos) {
+    return this.http.put(`${environment.url}/user/total/${id}`, {totalVideos
+    }).pipe(
+      map(data => data),
+      catchError(error => throwError(error))
+    );
+  }
+
 }

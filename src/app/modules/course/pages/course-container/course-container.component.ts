@@ -28,6 +28,8 @@ export class CourseContainerComponent implements OnInit {
             localStorage.setItem('userCourses', JSON.stringify(data));
             this.videoService.getCourseGroup(data).subscribe((data2) => {
             this.rawCourses = data2;
+            const totalVideos = this.getTotalVideos();
+            this.videoService.updateTotalVideos(id, totalVideos).subscribe();
             localStorage.setItem('rawCourses', JSON.stringify(data2));
        });
     }, error => {
@@ -42,6 +44,14 @@ export class CourseContainerComponent implements OnInit {
     this.router.navigate(['/home/lessons']);
   }
 
+  getTotalVideos() {
+    let  total = 0;
+    console.log(this.rawCourses);
+    for(const course of this.rawCourses) {
+     total =  total + course.video.length;
+    }
+    return total;
+  }
 
 
 }
