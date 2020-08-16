@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./video-share.component.scss']
 })
 export class VideoShareComponent implements OnInit {
-
+  hasAccess = true;
   video;
   url;
   videLoaded = false;
@@ -25,7 +25,12 @@ export class VideoShareComponent implements OnInit {
 
   ngOnInit() {
     const id = this.router.snapshot.paramMap.get('id');
-    this.getVideo(id);
+    const tok = this.router.snapshot.queryParamMap.get('id');
+    this.videoService.checkShareVideoAccess(tok).subscribe((data) => {
+      this.getVideo(id);
+    }, error => {
+      this.hasAccess = false;
+    })
   }
 
 

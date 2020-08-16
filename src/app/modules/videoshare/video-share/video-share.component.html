@@ -20,7 +20,7 @@
   </nav>
 
 <div>
-  <div class="container">
+  <div *ngIf="hasAccess" class="container">
 
       <iframe *ngIf="videLoaded" [src]="url"
       style="border:0;height:70vh;width:100%;max-width:100%" allowFullScreen="true" allow="encrypted-media"></iframe>
@@ -32,4 +32,12 @@
       </div>
     </div>
   </div>
+  <div *ngIf="!hasAccess" class="container">
+      <div class="title-container">
+          <div class="left">
+              <h1>Oops! Access is denied, Session for this share is expired</h1>
+          </div>
 
+      </div>
+    </div>
+  </div>
