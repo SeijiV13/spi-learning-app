@@ -79,7 +79,7 @@ constructor(private http: HttpClient) { }
   }
 
   checkShareVideoAccess(token) {
-    return this.http.get(`${environment.url}/authshare/${token}`).pipe(
+    return this.http.get(`${environment.url}/auth/authshare/${token}`).pipe(
       map(data => data),
       catchError(error => throwError(error))
     );
