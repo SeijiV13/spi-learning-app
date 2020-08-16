@@ -11,7 +11,7 @@
         <span *ngIf="sidebarTitle === 'Unit Competencies'"class="overview">{{selectedCourse.title.desc}}</span>
         <br><br>
         <ul *ngIf="sidebarTitle === 'Unit Competencies' ">
-          <li [ngClass]="lessonNumber === i + 1 ? 'selected' : ''" *ngFor="let data of lessons; let i = index" (click)="selectLesson(i + 1)">
+          <li [ngClass]="lessonNumber === i + 1 ? 'selected' : ''" *ngFor="let data of unitLength; let i = index" (click)="selectLesson(i + 1)">
               <span>
                   <i-bs name="tv"></i-bs> Unit Competency {{i + 1}}
               </span>

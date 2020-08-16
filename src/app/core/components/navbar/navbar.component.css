@@ -46,7 +46,11 @@ img {
   .company-name {
     display: none;
   }
+  .spi-logo {
+    display: none !important;
+  }
 }
+
 
 
 .logo-connect  {

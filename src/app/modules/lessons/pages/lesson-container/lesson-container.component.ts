@@ -22,6 +22,7 @@ export class LessonContainerComponent implements OnInit {
     this.groupLessons();
     this.getDefaultLesson();
     this.listenToSelectedLesson();
+    this.sortVideos();
   }
 
   getDefaultLesson() {
@@ -36,6 +37,10 @@ export class LessonContainerComponent implements OnInit {
       this.videos = this.selectedCourse.video.filter((data2) => data2.tags.some(tag => tag.includes(`uc${data}`)));
       localStorage.setItem('selectedVideos', JSON.stringify(this.videos));
     });
+  }
+
+  sortVideos() {
+    this.videos =  this.videos.sort((a, b) => parseInt(a.group.charAt(a.group.length - 1)) -   parseInt(b.group.charAt(a.group.length - 1)))
   }
 
   groupLessons() {
