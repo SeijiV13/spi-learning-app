@@ -1,3 +1,4 @@
+import { UcService } from './../../../../core/services/uc.service';
 import { VideoService } from './../../../../core/services/video.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,7 +12,8 @@ export class LessonContainerComponent implements OnInit {
   selectedCourse: any;
   videos: any;
   lessonNumber;
-  constructor(private videoService: VideoService, private router: Router) { }
+  description = '';
+  constructor(private videoService: VideoService, private router: Router, private ucService: UcService) { }
 
   ngOnInit() {
     this.selectedCourse = localStorage.getItem('selectedCourse') ? JSON.parse(localStorage.getItem('selectedCourse') ) : '';
@@ -23,11 +25,20 @@ export class LessonContainerComponent implements OnInit {
     this.getDefaultLesson();
     this.listenToSelectedLesson();
     this.sortVideos();
+
+  }
+
+  getGroup(data) {
+    const  name =  this.selectedCourse.title.value.toLowerCase() + `uc${data}`;
+    this.ucService.getUc(name).subscribe((data2: any) => {
+     this.description = data2.description;
+    });
   }
 
   getDefaultLesson() {
     this.videos = this.selectedCourse.video.filter((data2) => data2.tags.some(tag => tag.includes(`uc1`) ||  tag.includes(`UC1`)));
     this.lessonNumber = '1';
+    this.getGroup('1');
     localStorage.setItem('selectedVideos', JSON.stringify(this.videos));
   }
 
@@ -36,11 +47,12 @@ export class LessonContainerComponent implements OnInit {
       this.lessonNumber = data;
       this.videos = this.selectedCourse.video.filter((data2) => data2.tags.some(tag => tag.includes(`uc${data}`)));
       localStorage.setItem('selectedVideos', JSON.stringify(this.videos));
+      this.getGroup(data);
     });
   }
 
   sortVideos() {
-    this.videos =  this.videos.sort((a, b) => parseInt(a.group.charAt(a.group.length - 1)) -   parseInt(b.group.charAt(a.group.length - 1)))
+    this.videos =  this.videos.sort((a, b) => parseInt(a.group.charAt(a.group.length - 1)) -   parseInt(b.group.charAt(b.group.length - 1)))
   }
 
   groupLessons() {
