@@ -78,8 +78,8 @@ export class HomeContainerComponent implements OnInit {
   createUnitCompLength(tags) {
     const array = [];
     for (let tag of tags) {
-      const splittedtag =  tag.group.charAt(tag.group.length - 4)
-
+      // const splittedtag =  tag.group.charAt(tag.group.length - 4)
+      const splittedtag = tag.group.split("uc")[1].split("lo")[0];
 
       if(!array.includes(splittedtag)) {
         array.push(splittedtag);

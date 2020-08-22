@@ -46,6 +46,7 @@ export class LessonContainerComponent implements OnInit {
     this.videoService.selectLesson.subscribe((data) => {
       this.lessonNumber = data;
       this.videos = this.selectedCourse.video.filter((data2) => data2.tags.some(tag => tag.includes(`uc${data}`)));
+      this.sortVideos();
       localStorage.setItem('selectedVideos', JSON.stringify(this.videos));
       this.getGroup(data);
     });
