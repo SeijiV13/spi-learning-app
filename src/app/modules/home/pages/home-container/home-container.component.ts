@@ -20,6 +20,7 @@ export class HomeContainerComponent implements OnInit {
   selectedCourse;
   watchVideos: any= [];
   unitLength = [];
+  numberOfUc = [];
   constructor(private videoService: VideoService, private router: Router, private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
@@ -54,7 +55,13 @@ export class HomeContainerComponent implements OnInit {
   }
 
   getCourseTitle() {
+    this.numberOfUc = [];
     this.selectedCourse = JSON.parse(localStorage.getItem('selectedCourse'));
+    let i = 1;
+    while(i <= this.selectedCourse.numberOfUc) {
+      this.numberOfUc.push({uc: i});
+      i++;
+    }
   }
 
   listenToWatchedVideos() {
@@ -65,8 +72,7 @@ export class HomeContainerComponent implements OnInit {
 
   listenToLessons() {
     this.videoService.lessons.subscribe((data) => {
-      this.createUnitCompLength(data);
-      this.lessons = data;
+      console.log(data);
       this.cd.detectChanges();
     });
 
@@ -75,18 +81,6 @@ export class HomeContainerComponent implements OnInit {
     });
   }
 
-  createUnitCompLength(tags) {
-    const array = [];
-    for (let tag of tags) {
-      // const splittedtag =  tag.group.charAt(tag.group.length - 4)
-      const splittedtag = tag.group.split("uc")[1].split("lo")[0];
-
-      if(!array.includes(splittedtag)) {
-        array.push(splittedtag);
-      }
-    }
-    this.unitLength = array;
-  }
 
   listenToRouter() {
     this.router.events.subscribe((event) => {
