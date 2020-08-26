@@ -31,7 +31,9 @@ export class LessonContainerComponent implements OnInit {
   getGroup(data) {
     const  name =  this.selectedCourse.title.value.toLowerCase() + `uc${data}`;
     this.ucService.getUc(name).subscribe((data2: any) => {
-     this.description = data2.description;
+      if(data2) {
+        this.description = data2.description;
+      }
     });
   }
 
