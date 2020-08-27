@@ -72,7 +72,6 @@ export class HomeContainerComponent implements OnInit {
 
   listenToLessons() {
     this.videoService.lessons.subscribe((data) => {
-      console.log(data);
       this.cd.detectChanges();
     });
 
@@ -135,7 +134,6 @@ export class HomeContainerComponent implements OnInit {
   getWatchedVideos() {
     const id = localStorage.getItem('idus');
     this.videoService.getUserWatchedVideos(id).subscribe((data) => {
-      console.log(data);
       this.watchVideos = data;
     });
   }

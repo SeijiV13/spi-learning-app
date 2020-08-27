@@ -16,8 +16,8 @@ export class UcService {
       catchError(error => throwError(error))
     );
   }
-  getUc(name) {
-    return this.http.get(`${environment.url}/uc/${name}`).pipe(
+  getUc(name, ucNumber) {
+    return this.http.get(`${environment.url}/uc/${name}/${ucNumber}`).pipe(
       map(data => data),
       catchError(error => throwError(error))
     );

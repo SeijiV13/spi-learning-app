@@ -20,6 +20,8 @@ export class LessonContainerComponent implements OnInit {
     if(this.selectedCourse) {
       this.videoService.lessons.next(this.selectedCourse);
       this.videos =  this.selectedCourse.videos.filter(data2 => data2.uc === '1');
+      this.lessonNumber = '1';
+      this.getDescription();
     }
     this.listenToLesson();
   }
@@ -27,6 +29,18 @@ export class LessonContainerComponent implements OnInit {
   listenToLesson() {
     this.videoService.selectLesson.subscribe((data) => {
        this.videos =  this.selectedCourse.videos.filter(data2 => data2.uc === data.toString());
+       this.lessonNumber = data.toString();
+       this.getDescription();
+    });
+  }
+
+  getDescription() {
+    this.ucService.getUc(this.selectedCourse.id, this.lessonNumber).subscribe((data: any) => {
+      if(data) {
+        this.description = data.description;
+      } else {
+        this.description = '';
+      }
     });
   }
 
