@@ -36,16 +36,64 @@ li:hover {
 
 .footer {
   position: fixed;
+  padding: 15px;
   left: 0;
   bottom: 0;
   width: 100%;
   background-color: #4c524f;
   color: white;
+  height: auto;
   text-align: center;
+}
+.footer-elements {
+  display: flex;
+  justify-content: space-between;
 }
 
 .copy {
   margin-top: 15px;
   margin-bottom: 1rem;
   font-size: 12px;
+}
+
+.apex  {
+  background: url('../../../../../assets/images/apex.jpg');
+  width: 140px;
+  height: 110%;;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative;
+  float:left;
+
+}
+
+.clutch {
+  background: url('../../../../../assets/images/clutch-digital.jpg');
+  width: 140px;
+  height: 100%;;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative;
+  float:left;
+}
+
+@media(max-width: 656px) {
+  .apex {
+    background: url('../../../../../assets/images/apex.jpg');
+    width: 80px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    float: right;
+   }
+   .clutch {
+    background: url('../../../../../assets/images/clutch-digital.jpg');
+    width: 80px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    float:right;
+  }
 }
