@@ -33,6 +33,7 @@ export class LessonContainerComponent implements OnInit {
 
 
   goToVideo(data) {
+    localStorage.setItem('selectedVideos', JSON.stringify(this.videos));
     localStorage.setItem('selectedVideo', JSON.stringify(data));
     this.router.navigate(['/home/videos']);
   }
