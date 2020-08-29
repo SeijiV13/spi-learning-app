@@ -40,7 +40,7 @@ li:hover {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: #4c524f;
+  background-color: #242523;
   color: white;
   height: auto;
   text-align: center;
@@ -57,7 +57,7 @@ li:hover {
 }
 
 .apex  {
-  background: url('../../../../../assets/images/apex.jpg');
+  background: url('../../../../../assets/images/apex.png');
   width: 140px;
   height: 110%;;
   background-repeat: no-repeat;
@@ -68,7 +68,7 @@ li:hover {
 }
 
 .clutch {
-  background: url('../../../../../assets/images/clutch-digital.jpg');
+  background: url('../../../../../assets/images/clutch-digital.png');
   width: 140px;
   height: 100%;;
   background-repeat: no-repeat;
@@ -79,7 +79,7 @@ li:hover {
 
 @media(max-width: 656px) {
   .apex {
-    background: url('../../../../../assets/images/apex.jpg');
+    background: url('../../../../../assets/images/apex.png');
     width: 80px;
     height: 30px;
     background-repeat: no-repeat;
@@ -88,7 +88,7 @@ li:hover {
     float: right;
    }
    .clutch {
-    background: url('../../../../../assets/images/clutch-digital.jpg');
+    background: url('../../../../../assets/images/clutch-digital.png');
     width: 80px;
     height: 30px;
     background-repeat: no-repeat;
