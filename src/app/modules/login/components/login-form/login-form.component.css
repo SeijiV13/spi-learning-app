@@ -176,3 +176,7 @@ input::-moz-focus-inner {
   display: flex;
   justify-content: inherit;
 }
+
+.googleplay {
+  width: 200px;
+}
